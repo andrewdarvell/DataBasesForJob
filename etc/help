@@ -1,0 +1,5 @@
+Config format
+Main parameters
+    parname:main;type:main;log_file_conf:etc/log4j-dbwork.xml
+SQLconnection
+    parname:mysql_local;type:db;base_type:mysql;login:testdb;password:testdb;base:testdb;host:localhost;port:3306
