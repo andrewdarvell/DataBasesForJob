@@ -23,7 +23,7 @@ public class Main {
 
 
 		String mySqlLocal = "mysql_local";
-
+		String aaa = "111";
 		if (Worker.initConfig("etc/config.csv")){
 			if(Worker.dbConnect(mySqlLocal)){
 				try {
