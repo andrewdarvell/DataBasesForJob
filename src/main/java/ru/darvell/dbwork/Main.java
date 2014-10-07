@@ -2,17 +2,10 @@ package ru.darvell.dbwork;
 
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
-import ru.darvell.dbwork.databases.DataBase;
-import ru.darvell.dbwork.databases.impl.MySQLImpl;
-import ru.darvell.dbwork.databases.impl.OracleImpl;
 import ru.darvell.dbwork.utils.DBPrinter;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
 
@@ -23,7 +16,6 @@ public class Main {
 
 
 		String mySqlLocal = "mysql_local";
-		String aaa = "111";
 		if (Worker.initConfig("etc/config.csv")){
 			if(Worker.dbConnect(mySqlLocal)){
 				try {
