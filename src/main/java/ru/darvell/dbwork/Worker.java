@@ -11,6 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Основной класс для работы с базами данных
+ *
+ *
+ */
+
 public class Worker {
 
 	private static Logger log = Logger.getLogger(Worker.class);
@@ -18,6 +24,12 @@ public class Worker {
 	static Map<String,Map<String,String>> config = new HashMap<>();
 	static Map<String,DataBase> bases = new HashMap<>();
 
+	/**
+	 * <p>Загружает конфиг из файла</p>
+	 *
+	 * @param fileName Имя файла конфигурации
+	 * @return true если инициализация прошла успешно, false если файл не найден или ошибка в конфиге
+	 */
 	public static boolean initConfig(String fileName){
 		if ((config = ConfigReader.readFile(fileName))!= null){
 			Set<String> keys = config.keySet();
@@ -36,6 +48,12 @@ public class Worker {
 		return false;
 	}
 
+	/**
+	 * <p>Устанавливает соединение с БД</p>
+	 * <p>Берет данные для соединения с БД из параметров описанных в конфигурационном файле</p>
+	 * @param confName имя параметра в конфиге ('parname')
+	 * @return true в случае успешного соедиения, false - если возникает ошибка (сама ошибка в лог файле)
+	 */
 	public static boolean dbConnect(String confName){
 		try{
 			Map<String,String> confMap = config.get(confName);
@@ -71,6 +89,12 @@ public class Worker {
 		return false;
 	}
 
+	/**
+	 *<p>Запрос к базе данных</p>
+	 * @param confName имя параметра в кон
+	 * @param qery запрос к базе данных
+	 * @return PreparedStatement или null в сдучае ошибок
+	 */
 	public static PreparedStatement getDbStatement(String confName, String qery){
 		try{
 			return bases.get(confName).getPreparedStatement(qery);
@@ -80,9 +104,15 @@ public class Worker {
 		return null;
 	}
 
+	/**
+	 * <p>Закрывает соединение</p>
+	 * <p>Закрывает соединение с выбранной базой данных</p>
+	 * @param confName имя параметра в кон
+	 */
 	public static void closeConnection(String confName){
 		try{
 			bases.get(confName).disconnect();
+			log.info(confName + " disconnected");
 		}catch (Exception e){
 			log.error(e.toString());
 		}
