@@ -12,9 +12,13 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Прослойка между приложением и классом для работы с БД
- *
- *
+ *<p> Прослойка между приложением и классом для работы с БД</p>
+ *<p>Приложение должно работать именно с этим классом
+ * Сначала инициализируем конфигурационным файлом
+ * </p>
+ * <p>
+ * 	if (Worker.initConfig("etc/config.csv")){...}
+ *</p>
  */
 
 public class Worker {
@@ -91,7 +95,7 @@ public class Worker {
 
 	/**
 	 *<p>Запрос к базе данных</p>
-	 * @param confName имя параметра в кон
+	 * @param confName имя параметра в конфиге ('parname')
 	 * @param qery запрос к базе данных
 	 * @return PreparedStatement или null в сдучае ошибок
 	 */
