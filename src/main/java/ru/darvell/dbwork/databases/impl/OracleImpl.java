@@ -108,4 +108,9 @@ public class OracleImpl implements DataBase{
 				.append(dbName);
 		return stringBuilder.toString();
 	}
+
+	@Override
+	public void commit() {
+
+	}
 }

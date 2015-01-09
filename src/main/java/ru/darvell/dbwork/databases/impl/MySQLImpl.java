@@ -127,5 +127,14 @@ public class MySQLImpl implements DataBase{
 		return stringBuilder.toString();
 	}
 
+	@Override
+	public void commit() {
+		try {
+			connection.commit();
+		}catch (Exception e){
+			log.error(e.toString());
+		}
+	}
+
 
 }

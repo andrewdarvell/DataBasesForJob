@@ -32,4 +32,5 @@ public interface DataBase {
 	void disconnect();
 	//todo - Написать реализацию поучения строки поключения
 	String getConnectionString();
+	void commit();
 }
