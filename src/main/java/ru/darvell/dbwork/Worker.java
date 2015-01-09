@@ -108,6 +108,14 @@ public class Worker {
 		return null;
 	}
 
+	public static void commit(String confName){
+		try {
+			bases.get(confName).commit();
+		}catch (Exception e){
+			log.error(e.toString());
+		}
+	}
+
 	/**
 	 * <p>Закрывает соединение</p>
 	 * <p>Закрывает соединение с выбранной базой данных</p>
